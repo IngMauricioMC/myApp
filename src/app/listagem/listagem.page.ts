@@ -16,16 +16,19 @@ export class ListagemPage implements OnInit {
     this.page = 1;
     this.ApiService.getPosts(this.page).subscribe((data)=>{
       console.log(data);
-    this.posts = data.data; 
-    })
+      this.total_page = data.total_page;
+      this.posts = data.data; 
+    });
   }
 
   loadMoreData(event){
     this.page++;
     this.ApiService.getPosts(this.page).subscribe((data)=>{
       console.log(data);
-      this.posts = data.data; 
+      this.posts = this.posts.concat(data.data); 
       event.target.complete();
+      if(this.total_page == this.page)
+        event.target.disabled == true;
     });
   }
 

@@ -12,10 +12,10 @@ export class HomePage {
   
   constructor(private apiService: ApiService) {
 
-  	this.apiService.getPosts().subscribe((data)=>{
-      console.log(data);
-      // this.posts = data['data']['children'];
-    });
+  	// this.apiService.getPosts().subscribe((data)=>{
+   //    console.log(data);
+   //    // this.posts = data['data']['children'];
+   //  });
 
   }
 
