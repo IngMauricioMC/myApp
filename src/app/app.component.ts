@@ -22,15 +22,20 @@ export class AppComponent {
       icon: 'list'
     },
     {
+      title: 'Listagem',
+      url: '/listagem',
+      icon: 'list'
+    },
+    {
+      title: 'Formulario',
+      url: '/formulario',
+      icon: 'archive'
+    },
+    {
       title: 'About',
       url: '/about',
       icon: 'help-circle-outline'
     },
-    {
-      title: 'Listagem',
-      url: '/listagem',
-      icon: 'list'
-    }
   ];
 
   constructor(

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+  	<ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>formulario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="submitForm()">
+		<ion-item>
+			<ion-label>job</ion-label>
+			<ion-input type="text" [(ngMode)]="dadosPessoa.job" name="job" required></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Name</ion-label>
+			<ion-textarea [(ngModel)]="dadosPessoa.name" name="name" required></ion-textarea>
+		</ion-item>
+		<ion-button type="submit" expand="block">Enviar</ion-button>
+	</form>
+</ion-content>
