@@ -11,13 +11,13 @@ import { ModalPage } from '../modal/modal.page';
 
 export class ListagemPage implements OnInit {
 
-  public posts;
-  public page;
-  public total_page;
+  public posts: any;
+  public page: any;
+  public total_page: any;
 
-  constructor(private ApiService: ApiService) {
+  constructor(private apiService: ApiService, private modalController: ModalController) {
     this.page = 1;
-    this.ApiService.getPosts(this.page).subscribe((data: any)=>{
+    this.apiService.getPosts(this.page).subscribe((data: any)=>{
       console.log(data);
       this.total_page = data.total_page;
       this.posts = data.data;
@@ -26,8 +26,7 @@ export class ListagemPage implements OnInit {
 
   loadMoreData(event){
     this.page++;
-    this.ApiService.getPosts(this.page).subscribe((data: any)=>{
-      console.log(data);
+    this.apiService.getPosts(this.page).subscribe((data: any)=>{
       this.posts = this.posts.concat(data.data);
       event.target.complete();
       if(this.total_page == this.page)
@@ -35,9 +34,14 @@ export class ListagemPage implements OnInit {
     });
   }
 
-  async presentModal(){
+  async presentModal(post){
     const modal = await this.modalController.create({
-      Component: ModalPage
+      component: ModalPage,
+      componentProps: {
+       'firstName': post.first_name,
+       'lastName': post.last_name,
+       'modalController': this.modalController
+      }
     });
     return await modal.present();
   }

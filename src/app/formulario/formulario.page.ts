@@ -10,8 +10,8 @@ import { ApiService } from '../api.service';
 export class FormularioPage implements OnInit {
 
   dadosPessoa = {
-      job: '',
-      name: ''
+      name: '',
+      job: ''
   }
 
   constructor(private apiService : ApiService, private alertController: AlertController) { }
@@ -19,22 +19,23 @@ export class FormularioPage implements OnInit {
   ngOnInit() {
   }
 
-  async submitForm(){
+  async formSubmit(){
+
+   await this.apiService.sendPostRequest(this.dadosPessoa).subscribe((data)=>{
+     console.log(data);
+   }, error => {
+     console.log(error);
+   });
 
   	const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message : this.dadosPessoa.job,
+      header: 'Alerta!',
+      subHeader: 'Formulario API',
+      message: 'Dados enviados com sucesso.',
+      //message : this.dadosPessoa.job,
       // message: 'This is an alert message.',
       buttons: ['OK']
     });
 
     await alert.present();
-
-    this.ApiService.sendPostRequest(this.dadosPessoa).subscribe((data)=>{
-      console.log(data);
-    }, error => {
-      console.log(error);
-    });
   }
 }

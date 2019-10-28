@@ -9,7 +9,7 @@ import {ApiService} from '../api.service';
 export class HomePage {
 
   posts;
-  
+
   constructor(private apiService: ApiService) {
 
   	// this.apiService.getPosts().subscribe((data)=>{

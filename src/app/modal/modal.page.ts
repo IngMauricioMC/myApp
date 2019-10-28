@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalPage implements OnInit {
 
+  @Input() firstName: string;
+  @Input() lastName: string;
+  @Input() modalController: ModalController;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  dismissModal(){
+   this.modalController.dismiss({
+    'dismissed': true
+   });
   }
 
 }

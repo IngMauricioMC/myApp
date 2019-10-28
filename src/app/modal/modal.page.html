@@ -1,9 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>modal</ion-title>
+    <ion-buttons slot="end">
+     <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <p>{{ firstName }}</p>
+  <p>{{ lastName }}</p>
 </ion-content>
