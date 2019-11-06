@@ -11,7 +11,7 @@
 
   <ion-card *ngFor="let post of posts">
     <ion-card-header>
-      <ion-img src="{{post.avatar}}"></ion-img>>
+      <ion-img src="{{post.avatar}}"></ion-img>
       <ion-card-subtitle>
        {{post.fist_name}} {{post.last_name}}
       </ion-card-subtitle>
@@ -20,6 +20,12 @@
       <p>
         {{post.email}}
       </p>
+      <ion-button io-button fill="outline" (click)="editData(post)" color="dark" large>
+        Edit
+      </ion-button>
+      <ion-button io-button fill="outline" (click)="deleteData(post)" color="danger" large>
+        Delete
+      </ion-button>
       <ion-button io-button fill="outline" (click)="presentModal(post)" large>
         Read full article
       </ion-button>

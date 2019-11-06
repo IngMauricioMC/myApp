@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-listagem',
@@ -15,7 +16,7 @@ export class ListagemPage implements OnInit {
   public page: any;
   public total_page: any;
 
-  constructor(private apiService: ApiService, private modalController: ModalController) {
+  constructor(private apiService: ApiService, private modalController: ModalController, private alertController: AlertController) {
     this.page = 1;
     this.apiService.getPosts(this.page).subscribe((data: any)=>{
       console.log(data);
@@ -44,6 +45,32 @@ export class ListagemPage implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  async editData(post){
+    const alert = await this.alertController.create({
+      header: 'Alerta!',
+      subHeader: 'Formulario API',
+      message: 'Dados ('+post.first_name+' '+post.last_name+') editados com sucesso.',
+      //message : this.dadosPessoa.job,
+      // message: 'This is an alert message.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async deleteData(post){
+    const alert = await this.alertController.create({
+      header: 'Alerta!',
+      subHeader: 'Formulario API',
+      message: 'Dados ('+post.first_name+' '+post.last_name+') removidos.',
+      //message : this.dadosPessoa.job,
+      // message: 'This is an alert message.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   ngOnInit() {
