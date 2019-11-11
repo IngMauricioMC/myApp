@@ -48,10 +48,22 @@ export class ListagemPage implements OnInit {
   }
 
   async editData(post){
+
+    let dadosPessoa = {
+      "name": "Luis Mauricio",
+      "job": "Unincor"
+    }
+
+    await this.apiService.sendPutRequest(dadosPessoa, post.id).subscribe((data)=>{
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
+
     const alert = await this.alertController.create({
       header: 'Alerta!',
       subHeader: 'Formulario API',
-      message: 'Dados ('+post.first_name+' '+post.last_name+') editados com sucesso.',
+      message: 'Dados ('+dadosPessoa.name+') editados com sucesso.',
       //message : this.dadosPessoa.job,
       // message: 'This is an alert message.',
       buttons: ['OK']
@@ -61,6 +73,12 @@ export class ListagemPage implements OnInit {
   }
 
   async deleteData(post){
+    await this.apiService.sendDeleteRequest(post.id).subscribe((data)=>{
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
+
     const alert = await this.alertController.create({
       header: 'Alerta!',
       subHeader: 'Formulario API',

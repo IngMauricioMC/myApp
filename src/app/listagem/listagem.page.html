@@ -20,15 +20,10 @@
       <p>
         {{post.email}}
       </p>
-      <ion-button io-button fill="outline" (click)="editData(post)" color="dark" large>
-        Edit
-      </ion-button>
-      <ion-button io-button fill="outline" (click)="deleteData(post)" color="danger" large>
-        Delete
-      </ion-button>
-      <ion-button io-button fill="outline" (click)="presentModal(post)" large>
-        Read full article
-      </ion-button>
+      <ion-button io-button fill="outline" (click)="presentModal(post)" large>More Information...</ion-button>
+      <br>
+      <ion-button io-button fill="outline" (click)="editData(post)" color="dark" large>Edit</ion-button>
+      <ion-button io-button fill="outline" (click)="deleteData(post)" color="danger" large>Delete</ion-button>
     </ion-card-content>
   </ion-card>
 
